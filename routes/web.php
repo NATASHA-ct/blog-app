@@ -18,7 +18,9 @@ Auth::routes();
 
 Route::get('/',[\App\Http\Controllers\PostController::class,'index'])->name('index');
 
-Route::get('posts/{slug}',[\App\Http\Controllers\PostController::class,'view'])->name('post.view');
+//added a missing route to get list of posts created by a specific user
+Route::get('/user/{user}/posts', [\App\Http\Controllers\UserPostController::class, 'index'])->name('user.posts');
 
+Route::get('posts/{slug}',[\App\Http\Controllers\PostController::class,'view'])->name('post.view');
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
